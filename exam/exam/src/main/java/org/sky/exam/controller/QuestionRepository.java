@@ -1,4 +1,4 @@
-package controller;
+package org.sky.exam.controller;
 
 public interface QuestionRepository {
     void addQuestion();
