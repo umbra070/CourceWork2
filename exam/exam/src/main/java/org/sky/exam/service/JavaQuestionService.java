@@ -1,10 +1,10 @@
 package org.sky.exam.service;
 
+import org.sky.exam.controller.JavaController;
 import org.sky.exam.model.Question;
 import org.springframework.stereotype.Service;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 @Service
 public class JavaQuestionService implements QuestionService{
@@ -12,23 +12,24 @@ public class JavaQuestionService implements QuestionService{
 
     @Override
     public void add(Question question){
-
+        questions.add(question);
     }
     @Override
     public void add(String question, String answer){
-
+        questions.remove(new Question(question, answer));
     }
     @Override
     public void remove(Question question){
-
+        questions.remove(question);
     }
     @Override
     public Set<Question> getAll(){
         return questions;
     }
+
     @Override
     public Question getRandomQuestion(){
-        Question randQuestion = new Question();
-        return randQuestion;
+        return questions.stream()
+                .toList().get(new Random().nextInt(0, questions.size()));
     }
 }
