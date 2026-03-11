@@ -25,6 +25,7 @@ public class ExaminerServiceImpl implements ExaminerService{
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, String.format("Запрошено вопросов %d, при доступных %d", amount, questionService.getAll().size()));
         }
         return Stream.generate(questionService::getRandomQuestion)
+                .limit(amount * 2L)
                 .distinct()
                 .limit(amount)
                 .collect(Collectors.toSet());
