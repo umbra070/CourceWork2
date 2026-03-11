@@ -72,5 +72,6 @@ public class ExaminerServiceImplTest {
         ResponseStatusException exception = assertThrows(ResponseStatusException.class, () -> examinerService.getQuestions(8));
         assertEquals(HttpStatus.BAD_REQUEST, exception.getStatusCode());
         verify(questionService, never()).getRandomQuestion();
+
     }
 }
