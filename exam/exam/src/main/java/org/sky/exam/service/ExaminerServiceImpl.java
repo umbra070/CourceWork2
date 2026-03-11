@@ -12,16 +12,16 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @Service
-public class ExaminerServiceImpl implements ExaminerService{
-    QuestionService questionService;
+public class ExaminerServiceImpl implements ExaminerService {
+    private QuestionService questionService;
 
-    public ExaminerServiceImpl(QuestionService questionService){
+    public ExaminerServiceImpl(QuestionService questionService) {
         this.questionService = questionService;
     }
 
     @Override
     public Set<Question> getQuestions(int amount) {
-        if(amount > questionService.getAll().size()){
+        if (amount > questionService.getAll().size()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, String.format("Запрошено вопросов %d, при доступных %d", amount, questionService.getAll().size()));
         }
         return Stream.generate(questionService::getRandomQuestion)

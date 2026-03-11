@@ -32,7 +32,7 @@ public class ExaminerServiceImplTest {
     private ExaminerServiceImpl examinerService;
 
     @BeforeEach
-    void SetUp(){
+    void SetUp() {
         MockitoAnnotations.openMocks(this);
         question1 = new Question("Java Вопрос1", "Java Ответ1");
         question2 = new Question("Java Вопрос2", "Java Ответ2");
@@ -44,7 +44,7 @@ public class ExaminerServiceImplTest {
 
     @DisplayName("Тестирование уникальной выдачи n количества вопросов")
     @Test
-    void testingReturnSomeQuestions(){
+    void testingReturnSomeQuestions() {
         Set<Question> questionsSet = Set.of(question1, question2, question3, question4, question5, question6);
         when(questionService.getRandomQuestion()).thenReturn(question1)
                 .thenReturn(question2)
@@ -60,7 +60,7 @@ public class ExaminerServiceImplTest {
 
     @DisplayName("Тестирование вызова исключения при превышении количества вопросов")
     @Test
-    void testingThrowException(){
+    void testingThrowException() {
         Set<Question> questionsSet = Set.of(question1, question2, question3, question4, question5, question6);
         when(questionService.getRandomQuestion()).thenReturn(question1)
                 .thenReturn(question2)
